@@ -1,4 +1,4 @@
 /**
- * Created by test on 28.04.16.
+ * Main class
  */
 package it.testio.Main;
