@@ -1,4 +1,4 @@
-package it.testio.ifTtransformer;
+package it.testio.interfaces;
 
 /**
  *This is interface for Writer.

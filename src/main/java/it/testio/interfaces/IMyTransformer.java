@@ -1,4 +1,4 @@
-package it.testio.ifTtransformer;
+package it.testio.interfaces;
 
 /**
  * Created by test on 28.04.16.
