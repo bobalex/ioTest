@@ -11,5 +11,5 @@ public interface IMyWriter {
      * This is method of myWiter.
      * @param
      */
-    public void myWrite(byte[] data, OutputStream streamDesc) throws Exception;
+    public String myWrite(byte[] data, OutputStream streamDesc) throws Exception;
 }

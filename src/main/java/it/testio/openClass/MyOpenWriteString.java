@@ -2,6 +2,7 @@ package it.testio.openClass;
 import it.testio.interfaces.IMyOpenWrite;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+import java.io.StringWriter;
 
 /**
  * Created by test on 29.04.16.
