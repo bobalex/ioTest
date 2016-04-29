@@ -6,6 +6,6 @@ import java.io.InputStream;
 /**
  * Created by test on 29.04.16.
  */
-public interface IMyOpen {
+public interface IMyOpenRead {
     InputStream openStream(String name) throws Exception;
 }

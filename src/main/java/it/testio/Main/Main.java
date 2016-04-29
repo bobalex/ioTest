@@ -1,16 +1,14 @@
 package it.testio.Main;
-
 import it.testio.closeClass.CloseStream;
-import it.testio.interfaces.IMyOpen;
-import it.testio.interfaces.IMyReader;
-import it.testio.interfaces.IMyTransformer;
-import it.testio.openClass.MyOpenFile;
-import it.testio.openClass.MyOpenString;
-import it.testio.outputClass.OutputStream;
+import it.testio.interfaces.*;
+import it.testio.openClass.MyOpenReadFile;
+import it.testio.openClass.MyOpenWriteFile;
+import it.testio.outputClass.MyOutputStream;
 import it.testio.readerClass.MyReaderStream;
 import it.testio.transformerClass.TransformStream;
-
+import it.testio.writeClass.MyWriteStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Main class
@@ -18,24 +16,32 @@ import java.io.InputStream;
 public class Main {
     public static void main(final String[] args){
 
-        InputStream tmp;
+        InputStream descInStream;
+        OutputStream descOutStream;
+
         byte[] tmpBytes;
 
-        IMyOpen testFileOpen = new MyOpenFile();
+        IMyOpenRead testFileOpenRead = new MyOpenReadFile();
+        IMyOpenWrite testFileOpenWrite = new MyOpenWriteFile();
+        IMyWriter testFileWrite = new MyWriteStream();
         IMyReader testFileRead = new MyReaderStream();
         IMyTransformer testFileTrans = new TransformStream();
 
-        IMyOpen testStringOpen = new MyOpenString();
-        IMyReader testStringRead = new MyReaderStream();
-        IMyTransformer testStringTrans = new TransformStream();
+   //     IMyOpenRead testStringOpen = new MyOpenReadString();
+     //   IMyReader testStringRead = new MyReaderStream();
+       // IMyTransformer testStringTrans = new TransformStream();
 
         try {
-            tmp = testFileOpen.openStream("/home/test/project_java/homework_io_git/src/test.txt");
-            OutputStream.printFile(testFileRead.myRead(tmp));
+            descInStream = testFileOpenRead.openStream("/home/test/project_java/homework_io_git/src/test.txt");
+            descOutStream = testFileOpenWrite.openStream("1.txt");
 
-            System.out.println(testFileTrans.transformStream(testFileRead.myRead(tmp)));
+            tmpBytes = testFileRead.myRead(descInStream);
+            MyOutputStream.printFile(tmpBytes);
 
-            CloseStream.closeStream(tmp);
+
+
+            System.out.println(testFileTrans.transformStream(testFileRead.myRead(descInStream)));
+            CloseStream.closeStream(descInStream);
         }catch(java.io.FileNotFoundException e){
             System.out.print("File not found");
         }catch (Exception e) {
@@ -43,16 +49,16 @@ public class Main {
         }
 
 
-        try {
-            tmp = testStringOpen.openStream("1.txt\n");
-            OutputStream.printFile(testStringRead.myRead(tmp));
-
-            System.out.println(testStringTrans.transformStream(testStringRead.myRead(tmp)));
-
-            CloseStream.closeStream(tmp);
-        }catch (Exception e){
-            System.out.print("Problem");
-        }
+//        try {
+  //          tmp = testStringOpen.openStream("1.txt\n");
+    //        MyOutputStream.printFile(testStringRead.myRead(tmp));
+//
+  //          System.out.println(testStringTrans.transformStream(testStringRead.myRead(tmp)));
+//
+  //          CloseStream.closeStream(tmp);
+    //    }catch (Exception e){
+      //      System.out.print("Problem");
+        //}
 
     }
 }
