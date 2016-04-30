@@ -46,11 +46,12 @@ public class Main {
 
             //read,transform,write
             tmpBytes = testFileRead.myRead(descInStream);
-            tmp = testFileWrite.myWrite(tmpBytes, descOutStream);
+
+            tmp = testFileWrite.myWrite(testFileTrans.transformStream(tmpBytes), descOutStream);
 
             //print
-            MyOutputStream.printFile(tmpBytes);
-            System.out.println(tmp);
+            //MyOutputStream.printFile(tmpBytes);
+            //System.out.println(tmp);
 
             //Close
             CloseStreamIn.closeStream(descInStream);
@@ -69,10 +70,11 @@ public class Main {
 
             //read,transform,write
             tmpBytes = testStringRead.myRead(descInStream);
+
             tmp = testStringWrite.myWrite(tmpBytes, descOutStream);
 
             //print
-            System.out.println(tmp);
+            //System.out.println(tmp);
 
             //Close
             CloseStreamOut.closeStream(descOutStream);
